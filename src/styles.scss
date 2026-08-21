@@ -1,0 +1,160 @@
+/* ============================================================
+   Beatbox — global design tokens
+   Aesthetic: matte-black DJ hardware. Aluminium jog wheels,
+   cyan / magenta pad LEDs (mirrors the pink+green pads in the
+   reference photo). Chivo Mono for hardware labels, Sora for UI.
+   ============================================================ */
+
+:root {
+  /* chassis */
+  --bg:            #0a0b0d;
+  --chassis:       #16181c;
+  --chassis-hi:    #1e2127;
+  --chassis-lo:    #0d0e11;
+  --panel:         #202329;
+  --groove:        #050607;
+  --edge:          #34373f;
+
+  /* metal */
+  --alu:           #3a3d44;
+  --alu-hi:        #5a5e68;
+  --alu-lo:        #202227;
+
+  /* silver platter (jog disk) — shared across themes so the disk stays silver */
+  --platter-a:     #f6f7f8;
+  --platter-b:     #aeb2b9;
+  --platter-c:     #d9dce0;
+  --platter-d:     #8d9199;
+  --platter-groove: rgba(0, 0, 0, 0.13);
+  --rim-hi:        #ffffff;
+  --rim-mid:       #b8bcc3;
+  --rim-lo:        #6f747c;
+
+  /* LEDs */
+  --cyan:          #22d3ee;
+  --cyan-dim:      #0e7f92;
+  --magenta:       #f0398b;
+  --magenta-dim:   #8a1f50;
+  --lime:          #b6f36b;
+  --amber:         #ffb020;
+
+  /* text */
+  --ink:           #e7e9ee;
+  --ink-soft:      #9aa0ac;
+  --ink-faint:     #5b616d;
+
+  --label:         'Chivo Mono', ui-monospace, monospace;
+  --ui:            'Sora', system-ui, sans-serif;
+
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background:
+    radial-gradient(120% 80% at 50% -10%, var(--chassis) 0%, var(--bg) 55%) fixed;
+  color: var(--ink);
+  font-family: var(--ui);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* hardware-style engraved label */
+.hw-label {
+  font-family: var(--label);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-shadow: 0 1px 0 #000;
+  user-select: none;
+}
+
+button { font-family: inherit; }
+
+::-webkit-scrollbar { height: 8px; width: 8px; }
+::-webkit-scrollbar-thumb { background: #2a2d33; border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ============================================================
+   Theme palettes — swapped via data-theme on <html>.
+   The silver --platter-* tokens are intentionally left as-is so
+   the jog disk stays silver in every theme.
+   ============================================================ */
+
+[data-theme='light'] {
+  --bg: #e6e8ee;
+  --chassis: #f7f8fa;
+  --chassis-hi: #ffffff;
+  --chassis-lo: #e2e5ea;
+  --panel: #eef0f4;
+  --groove: #c1c5cd;
+  --edge: #d3d7de;
+  --alu: #c4c8cf;
+  --alu-hi: #edf0f3;
+  --alu-lo: #9aa0a8;
+  --cyan: #0891b2;
+  --cyan-dim: #7dd3e8;
+  --magenta: #db2777;
+  --magenta-dim: #f7a8cd;
+  --lime: #4d7c0f;
+  --amber: #b45309;
+  --ink: #191c21;
+  --ink-soft: #545a63;
+  --ink-faint: #878d97;
+}
+
+[data-theme='synthwave'] {
+  --bg: #150e26;
+  --chassis: #241a3e;
+  --chassis-hi: #302452;
+  --chassis-lo: #180f2c;
+  --panel: #2a1f47;
+  --groove: #0c0720;
+  --edge: #493a6c;
+  --alu: #3a3160;
+  --alu-hi: #6152a0;
+  --alu-lo: #241c40;
+  --cyan: #2dd4f0;
+  --cyan-dim: #0e7f92;
+  --magenta: #ff4fa3;
+  --magenta-dim: #a01f5f;
+  --lime: #c4f36b;
+  --amber: #ffb020;
+  --ink: #f3ecff;
+  --ink-soft: #baabdc;
+  --ink-faint: #7f6fa8;
+}
+
+[data-theme='chrome'] {
+  --bg: #b6bbc3;
+  --chassis: #d9dde2;
+  --chassis-hi: #f0f2f5;
+  --chassis-lo: #c3c8d0;
+  --panel: #ced3da;
+  --groove: #888e97;
+  --edge: #a6acb5;
+  --alu: #bcc1c9;
+  --alu-hi: #f0f2f5;
+  --alu-lo: #8c929b;
+  --cyan: #0e7490;
+  --cyan-dim: #22d3ee;
+  --magenta: #be185d;
+  --magenta-dim: #f472b6;
+  --lime: #3f6212;
+  --amber: #a16207;
+  --ink: #1d2127;
+  --ink-soft: #474d55;
+  --ink-faint: #71777f;
+}
